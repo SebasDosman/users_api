@@ -19,11 +19,11 @@ To use the API Gateway with Circuit Breaker and Time Limiter and run the microse
 2. Navigate to the root directory of the cloned repository.
 3. Install dependencies by running:
 ```bash
-   npm install
+   mvn install install
 ```
 4. Start the API Gateway and microservices by running:
 ```bash
-   npm start
+   mvn spring-boot:run
 ```
 5. Access the API Gateway endpoints to interact with the microservices.
 

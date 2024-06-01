@@ -1,17 +1,17 @@
-package co.com.dosman.service.VerboHttp.services.implementations;
+package co.com.dosman.service.usuarios.services.implementations;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.com.dosman.service.VerboHttp.dto.CreateUserDTO;
-import co.com.dosman.service.VerboHttp.dto.GetUserDTO;
-import co.com.dosman.service.VerboHttp.dto.UpdateUserDTO;
-import co.com.dosman.service.VerboHttp.exceptions.UserException;
-import co.com.dosman.service.VerboHttp.mappers.UserMapper;
-import co.com.dosman.service.VerboHttp.repositories.UserRepository;
-import co.com.dosman.service.VerboHttp.services.IUserService;
-import co.com.dosman.service.VerboHttp.utilities.UserValidate;
+import co.com.dosman.service.usuarios.dto.CreateUserDTO;
+import co.com.dosman.service.usuarios.dto.GetUserDTO;
+import co.com.dosman.service.usuarios.dto.UpdateUserDTO;
+import co.com.dosman.service.usuarios.exceptions.UserException;
+import co.com.dosman.service.usuarios.mappers.UserMapper;
+import co.com.dosman.service.usuarios.repositories.UserRepository;
+import co.com.dosman.service.usuarios.services.IUserService;
+import co.com.dosman.service.usuarios.utilities.UserValidate;
 import lombok.RequiredArgsConstructor;
 
 

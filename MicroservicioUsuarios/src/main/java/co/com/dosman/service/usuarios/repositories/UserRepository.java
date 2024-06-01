@@ -1,9 +1,9 @@
-package co.com.dosman.service.VerboHttp.repositories;
-
-import co.com.dosman.service.VerboHttp.model.User;
+package co.com.dosman.service.usuarios.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import co.com.dosman.service.usuarios.model.User;
 
 
 @Repository

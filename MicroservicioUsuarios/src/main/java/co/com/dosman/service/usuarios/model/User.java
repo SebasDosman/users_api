@@ -1,4 +1,4 @@
-package co.com.dosman.service.VerboHttp.model;
+package co.com.dosman.service.usuarios.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

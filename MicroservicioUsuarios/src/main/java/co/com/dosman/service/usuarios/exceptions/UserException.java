@@ -1,4 +1,4 @@
-package co.com.dosman.service.VerboHttp.exceptions;
+package co.com.dosman.service.usuarios.exceptions;
 
 
 public class UserException extends Exception {

@@ -1,11 +1,12 @@
-package co.com.dosman.service.VerboHttp.advice;
+package co.com.dosman.service.usuarios.advice;
 
-import co.com.dosman.service.VerboHttp.exceptions.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import co.com.dosman.service.usuarios.exceptions.UserException;
 
 import java.util.HashMap;
 import java.util.Map;

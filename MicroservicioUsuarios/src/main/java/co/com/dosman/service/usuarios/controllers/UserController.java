@@ -1,8 +1,5 @@
-package co.com.dosman.service.VerboHttp.controllers;
+package co.com.dosman.service.usuarios.controllers;
 
-import co.com.dosman.service.VerboHttp.dto.*;
-import co.com.dosman.service.VerboHttp.exceptions.UserException;
-import co.com.dosman.service.VerboHttp.services.implementations.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import co.com.dosman.service.usuarios.dto.*;
+import co.com.dosman.service.usuarios.exceptions.UserException;
+import co.com.dosman.service.usuarios.services.implementations.UserService;
 
 
 @RequiredArgsConstructor

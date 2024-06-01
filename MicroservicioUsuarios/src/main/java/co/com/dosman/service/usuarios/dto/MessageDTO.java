@@ -1,4 +1,4 @@
-package co.com.dosman.service.VerboHttp.dto;
+package co.com.dosman.service.usuarios.dto;
 
 import lombok.Builder;
 import lombok.Data;

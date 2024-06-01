@@ -1,10 +1,10 @@
-package co.com.dosman.service.VerboHttp.mappers;
-
-import co.com.dosman.service.VerboHttp.dto.*;
-import co.com.dosman.service.VerboHttp.model.User;
+package co.com.dosman.service.usuarios.mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import co.com.dosman.service.usuarios.dto.*;
+import co.com.dosman.service.usuarios.model.User;
 
 
 public class UserMapper {

@@ -1,4 +1,4 @@
-package co.com.dosman.service.VerboHttp.utilities;
+package co.com.dosman.service.usuarios.utilities;
 
 
 public class UserValidate {

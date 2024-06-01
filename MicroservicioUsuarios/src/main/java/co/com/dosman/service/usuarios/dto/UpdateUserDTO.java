@@ -1,6 +1,6 @@
-package co.com.dosman.service.VerboHttp.dto;
+package co.com.dosman.service.usuarios.dto;
 
-import co.com.dosman.service.VerboHttp.utilities.UserValidate;
+import co.com.dosman.service.usuarios.utilities.UserValidate;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,11 @@ import lombok.ToString;
 @Builder
 @Data
 @ToString
-public class CreateUserDTO {
+public class UpdateUserDTO {
+    @NotNull(message = UserValidate.ID_NOT_NULL)
+    @NotBlank(message = UserValidate.ID_NOT_EMPTY)
+    private Long id;
+
     @NotNull(message = UserValidate.NAME_NOT_NULL)
     @NotBlank(message = UserValidate.NAME_NOT_EMPTY)
     @Pattern(regexp = UserValidate.NAME_REGEX, message = UserValidate.NAME_NOT_VALID)

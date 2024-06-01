@@ -1,4 +1,4 @@
-package co.com.dosman.service.VerboHttp;
+package co.com.dosman.service.usuarios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -19,7 +19,7 @@ To use the API Gateway with Circuit Breaker and Time Limiter and run the microse
 2. Navigate to the root directory of the cloned repository.
 3. Install dependencies by running:
 ```bash
-   mvn install install
+   mvn clean install
 ```
 4. Start the API Gateway and microservices by running:
 ```bash

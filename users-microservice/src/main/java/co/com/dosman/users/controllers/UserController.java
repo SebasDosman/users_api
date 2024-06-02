@@ -1,5 +1,7 @@
 package co.com.dosman.users.controllers;
 
+import co.com.dosman.users.exceptions.ConflictException;
+import co.com.dosman.users.exceptions.NotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +26,7 @@ public class UserController {
     private final IUserService userService;
 
     @DeleteMapping(path = "/deleteUser/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MessageDTO> deleteUser(@PathVariable Long id) throws UserException {
+    public ResponseEntity<MessageDTO> deleteUser(@PathVariable Long id) throws UserException, NotFoundException {
         return new ResponseEntity<MessageDTO>(MessageDTO.builder().message(userService.deleteUser(id)).build(), HttpStatus.OK);
     }
 
@@ -34,17 +36,17 @@ public class UserController {
     }
 
     @GetMapping(path = "/getUserById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GetUserDTO> getUserById(@PathVariable Long id) throws UserException {
+    public ResponseEntity<GetUserDTO> getUserById(@PathVariable Long id) throws UserException, NotFoundException {
         return new ResponseEntity<GetUserDTO>(userService.getUserById(id), HttpStatus.OK);
     }
 
     @PostMapping(path = "/saveUser", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GetUserDTO> saveUser(@Valid @RequestBody CreateUserDTO createUserDTO) throws UserException {
+    public ResponseEntity<GetUserDTO> saveUser(@Valid @RequestBody CreateUserDTO createUserDTO) throws UserException, ConflictException {
         return new ResponseEntity<GetUserDTO>(userService.saveUser(createUserDTO), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/updateUser", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GetUserDTO> updateUser(@Valid @RequestBody UpdateUserDTO updateUserDTO) throws UserException {
+    public ResponseEntity<GetUserDTO> updateUser(@Valid @RequestBody UpdateUserDTO updateUserDTO) throws UserException, NotFoundException {
         return new ResponseEntity<GetUserDTO>(userService.updateUser(updateUserDTO), HttpStatus.OK);
     }
 }

@@ -1,5 +1,7 @@
 package co.com.dosman.users.advice;
 
+import co.com.dosman.users.exceptions.ConflictException;
+import co.com.dosman.users.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,6 +31,26 @@ public class ApplicationExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(UserException.class)
     public Map<String, String> handleUserException(UserException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("error", ex.getMessage());
+
+        return errors;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public Map<String, String> handleNotFoundException(NotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("error", ex.getMessage());
+
+        return errors;
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(ConflictException.class)
+    public Map<String, String> handleConflictException(ConflictException ex) {
         Map<String, String> errors = new HashMap<>();
 
         errors.put("error", ex.getMessage());

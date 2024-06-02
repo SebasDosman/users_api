@@ -22,3 +22,30 @@ eureka:
         defaultZone: http://localhost:8761/eureka
     instance:
       instance-id: ${spring.application.name}:${server.port}
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      shared:
+        register-health-indicator: true
+        sliding-window-type: count_based
+        sliding-window-size: 5
+        failure-rate-threshold: 50  # Failure rate threshold
+        slow-call-rate-threshold: 50  # Slow Call Rate Threshold
+        slow-call-duration-threshold: 2s  # Threshold duration for slow calls
+        permitted-number-of-calls-in-half-open-state: 1
+        max-wait-duration-in-half-open-state: 10s
+        wait-duration-in-open-state: 10s
+        writable-stack-trace-enabled: true
+        automatic-transition-from-open-to-half-open-enabled: true
+    instances:
+      example:
+        base-config: shared
+  timelimiter:
+    configs:
+      shared:
+        timeout-duration: 2s  # Wait time duration
+        cancel-running-future: true
+    instances:
+      example:
+        base-config: shared

@@ -1,4 +1,4 @@
-package co.com.dosman.roles.dto;
+package co.com.dosman.users.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -9,4 +9,3 @@ import lombok.Data;
 public class MessageDTO {
     private String message;
 }
-

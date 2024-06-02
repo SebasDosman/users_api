@@ -1,9 +1,9 @@
 package co.com.dosman.roles.mappers;
 
+import co.com.dosman.common.entities.Role;
 import co.com.dosman.roles.dto.CreateRoleDTO;
 import co.com.dosman.roles.dto.GetRoleDTO;
 import co.com.dosman.roles.dto.UpdateRoleDTO;
-import co.com.dosman.roles.model.Role;
 
 import java.util.List;
 import java.util.stream.Collectors;

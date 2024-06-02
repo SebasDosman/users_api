@@ -2,6 +2,8 @@ package co.com.dosman.users.services.implementations;
 
 import java.util.List;
 
+import co.com.dosman.users.exceptions.ConflictException;
+import co.com.dosman.users.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import co.com.dosman.users.dto.CreateUserDTO;
@@ -21,9 +23,9 @@ public class UserService implements IUserService {
     private final UserRepository userRepository;
 
     @Override
-    public String deleteUser(Long id) throws UserException {
+    public String deleteUser(Long id) throws UserException, NotFoundException {
         if (id == null) throw new UserException(UserValidate.ID_NOT_NULL);
-        if (!userRepository.existsById(id)) throw new UserException(UserValidate.USER_NOT_FOUND);
+        if (!userRepository.existsById(id)) throw new NotFoundException(UserValidate.USER_NOT_FOUND);
 
         userRepository.delete(userRepository.getReferenceById(id));
 
@@ -36,25 +38,25 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public GetUserDTO getUserById(Long id) throws UserException {
+    public GetUserDTO getUserById(Long id) throws UserException, NotFoundException {
         if (id == null) throw new UserException(UserValidate.ID_NOT_NULL);
-        if (!userRepository.existsById(id)) throw new UserException(UserValidate.USER_NOT_FOUND);
+        if (!userRepository.existsById(id)) throw new NotFoundException(UserValidate.USER_NOT_FOUND);
 
         return UserMapper.modelToGetUserDto(userRepository.getReferenceById(id));
     }
     
     @Override
-    public GetUserDTO saveUser(CreateUserDTO createUserDTO) throws UserException {
+    public GetUserDTO saveUser(CreateUserDTO createUserDTO) throws UserException, ConflictException {
         if (createUserDTO == null) throw new UserException(UserValidate.USER_NOT_NULL);
-        if (userRepository.existsByEmail(createUserDTO.getEmail())) throw new UserException(UserValidate.EMAIL_ALREADY_EXISTS);
+        if (userRepository.existsByEmail(createUserDTO.getEmail())) throw new ConflictException(UserValidate.EMAIL_ALREADY_EXISTS);
 
         return UserMapper.modelToGetUserDto(userRepository.save(UserMapper.createUserDtoToModel(createUserDTO)));
     }
 
     @Override
-    public GetUserDTO updateUser(UpdateUserDTO updateUserDTO) throws UserException {
+    public GetUserDTO updateUser(UpdateUserDTO updateUserDTO) throws UserException, NotFoundException {
         if (updateUserDTO == null) throw new UserException(UserValidate.USER_NOT_NULL);
-        if (!userRepository.existsById(updateUserDTO.getId())) throw new UserException(UserValidate.USER_NOT_FOUND);
+        if (!userRepository.existsById(updateUserDTO.getId())) throw new NotFoundException(UserValidate.USER_NOT_FOUND);
 
         return UserMapper.modelToGetUserDto(userRepository.save(UserMapper.updateUserDtoToModel(updateUserDTO)));
     }

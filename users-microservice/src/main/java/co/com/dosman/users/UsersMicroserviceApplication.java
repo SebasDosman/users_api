@@ -1,4 +1,4 @@
-package co.com.dosman.roles;
+package co.com.dosman.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,12 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
-@ComponentScan({ "co.com.dosman.roles" })
-@EnableJpaRepositories({ "co.com.dosman.roles.repositories" })
+@ComponentScan({ "co.com.dosman.users" })
+@EnableJpaRepositories({ "co.com.dosman.users.repositories" })
 @EntityScan({ "co.com.dosman.common.entities" }) 
 @SpringBootApplication
-public class RolesMicroserviceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(RolesMicroserviceApplication.class, args);
-    }
+public class UsersMicroserviceApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(UsersMicroserviceApplication.class, args);
+	}
 }

@@ -1,5 +1,7 @@
 package co.com.dosman.gateway.controllers;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,7 @@ import java.time.Duration;
 
 
 @RestController
+@Slf4j
 public class GatewayController {
     private static final String RESILIENCE4J_INSTANCE_NAME = "example";
     private static final String FALLBACK_METHOD = "fallbackMethod";
@@ -23,22 +26,16 @@ public class GatewayController {
     @GetMapping(value = "/timeout/{timeout}", produces = MediaType.APPLICATION_JSON_VALUE)
     @TimeLimiter(name = RESILIENCE4J_INSTANCE_NAME, fallbackMethod = FALLBACK_METHOD)
     public Mono<ResponseEntity<Boolean>> timeout(@PathVariable int timeout) {
-        return Mono.just(new ResponseEntity<>(true, HttpStatus.OK))
-                .delayElement(Duration.ofSeconds(timeout));
+        return Mono.just(new ResponseEntity<>(true, HttpStatus.OK)).delayElement(Duration.ofSeconds(timeout));
     }
 
     @GetMapping(value = "/timeDelay/{delay}", produces = MediaType.APPLICATION_JSON_VALUE)
     @CircuitBreaker(name = RESILIENCE4J_INSTANCE_NAME, fallbackMethod = FALLBACK_METHOD)
     public Mono<ResponseEntity<Boolean>> timeDelay(@PathVariable int delay) {
-        return Mono.just(new ResponseEntity<>(true, HttpStatus.OK))
-                .delayElement(Duration.ofSeconds(delay));
+        return Mono.just(new ResponseEntity<>(true, HttpStatus.OK)).delayElement(Duration.ofSeconds(delay));
     }
 
-    private Mono<ResponseEntity<Boolean>> delayFallbackMethod(int delay, Throwable t) {
-        return Mono.just(new ResponseEntity<>(false, HttpStatus.BAD_REQUEST));
-    }
-
-    private Mono<ResponseEntity<Boolean>> timeoutFallbackMethod(int timeout, Throwable t) {
+    private Mono<ResponseEntity<Boolean>> fallbackMethod(int value, Throwable t) {
         return Mono.just(new ResponseEntity<>(false, HttpStatus.BAD_REQUEST));
     }
 }

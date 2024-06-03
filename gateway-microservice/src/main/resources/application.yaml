@@ -19,9 +19,16 @@ spring:
 eureka:
   client:
     service-url:
-        defaultZone: http://localhost:8761/eureka
-    instance:
-      instance-id: ${spring.application.name}:${server.port}
+        default-zone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+
+logging:
+  level:
+    root: INFO
+    co.com.dosman.gateway: DEBUG
+    io.github.resilience4j.circuitbreaker: DEBUG
+    io.github.resilience4j.timelimiter: DEBUG
 
 resilience4j:
   circuitbreaker:
@@ -31,7 +38,7 @@ resilience4j:
         sliding-window-type: count_based
         sliding-window-size: 5
         failure-rate-threshold: 50  # Failure rate threshold
-        slow-call-rate-threshold: 50  # Slow Call Rate Threshold
+        slow-call-rate-threshold: 50  # Slow call rate threshold
         slow-call-duration-threshold: 2s  # Threshold duration for slow calls
         permitted-number-of-calls-in-half-open-state: 1
         max-wait-duration-in-half-open-state: 10s

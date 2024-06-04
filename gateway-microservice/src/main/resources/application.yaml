@@ -1,0 +1,58 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: gateway-microservice
+  cloud:
+    gateway:
+      routes:
+        - id: USERS-MICROSERVICE
+          uri: lb://USERS-MICROSERVICE/
+          predicates:
+            - Path=/user/**
+        - id: ROLES-MICROSERVICE
+          uri: lb://ROLES-MICROSERVICE/
+          predicates:
+            - Path=/role/**
+
+eureka:
+  client:
+    service-url:
+        default-zone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+
+logging:
+  level:
+    root: INFO
+    co.com.dosman.gateway: DEBUG
+    io.github.resilience4j.circuitbreaker: DEBUG
+    io.github.resilience4j.timelimiter: DEBUG
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      shared:
+        register-health-indicator: true
+        sliding-window-type: count_based
+        sliding-window-size: 5
+        failure-rate-threshold: 50  # Failure rate threshold
+        slow-call-rate-threshold: 50  # Slow call rate threshold
+        slow-call-duration-threshold: 2s  # Threshold duration for slow calls
+        permitted-number-of-calls-in-half-open-state: 1
+        max-wait-duration-in-half-open-state: 10s
+        wait-duration-in-open-state: 10s
+        writable-stack-trace-enabled: true
+        automatic-transition-from-open-to-half-open-enabled: true
+    instances:
+      example:
+        base-config: shared
+  timelimiter:
+    configs:
+      shared:
+        timeout-duration: 2s  # Wait time duration
+        cancel-running-future: true
+    instances:
+      example:
+        base-config: shared

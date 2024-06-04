@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import co.com.dosman.common.entities.Role;
+import co.com.dosman.roles.exceptions.RoleException;
 import co.com.dosman.users.dto.*;
 import co.com.dosman.users.exceptions.UserException;
 import co.com.dosman.users.services.IUserService;
@@ -49,4 +51,6 @@ public class UserController {
     public ResponseEntity<GetUserDTO> updateUser(@Valid @RequestBody UpdateUserDTO updateUserDTO) throws UserException, NotFoundException {
         return new ResponseEntity<GetUserDTO>(userService.updateUser(updateUserDTO), HttpStatus.OK);
     }
+
+     
 }

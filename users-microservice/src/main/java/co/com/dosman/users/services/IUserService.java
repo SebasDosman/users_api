@@ -2,6 +2,7 @@ package co.com.dosman.users.services;
 
 import java.util.List;
 
+import co.com.dosman.roles.exceptions.RoleException;
 import co.com.dosman.users.dto.CreateUserDTO;
 import co.com.dosman.users.dto.GetUserDTO;
 import co.com.dosman.users.dto.UpdateUserDTO;
@@ -16,4 +17,5 @@ public interface IUserService {
     GetUserDTO getUserById(Long id) throws UserException, NotFoundException;
     GetUserDTO saveUser(CreateUserDTO createUserDTO) throws UserException, ConflictException;
     GetUserDTO updateUser(UpdateUserDTO updateUserDTO) throws UserException, NotFoundException;
+    GetUserDTO assignRoleToUser(Long userId, Long roleId) throws UserException, NotFoundException, RoleException;
 }

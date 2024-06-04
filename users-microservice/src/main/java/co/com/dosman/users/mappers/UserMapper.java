@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import co.com.dosman.common.entities.User;
-import co.com.dosman.users.dto.*;
+import co.com.dosman.users.dto.CreateUserDTO;
+import co.com.dosman.users.dto.GetUserDTO;
+import co.com.dosman.users.dto.UpdateUserDTO;
 
 
 public class UserMapper {

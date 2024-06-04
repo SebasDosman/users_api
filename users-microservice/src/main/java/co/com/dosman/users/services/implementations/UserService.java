@@ -1,7 +1,5 @@
 package co.com.dosman.users.services.implementations;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -76,7 +74,15 @@ public class UserService implements IUserService {
 		if (!userRepository.existsById(updateUserDTO.getId()))
 			throw new NotFoundException(UserValidate.USER_NOT_FOUND);
 
-		return UserMapper.modelToGetUserDto(userRepository.save(UserMapper.updateUserDtoToModel(updateUserDTO)));
+		User userToUpdate = UserMapper.updateUserDtoToModel(updateUserDTO);
+
+		if (updateUserDTO.getRole_id() != null) { 
+		    Role newRole = roleRepository.findById(updateUserDTO.getRole_id()) 
+		        .orElseThrow(() -> new NotFoundException(RoleValidate.ROLE_NOT_FOUND));
+		    userToUpdate.setRole(newRole);
+		}
+
+		return UserMapper.modelToGetUserDto(userRepository.save(userToUpdate));
 	}
 
 	public GetUserDTO updateUserRole(Long userId, Long newRoleId) throws UserException, NotFoundException {

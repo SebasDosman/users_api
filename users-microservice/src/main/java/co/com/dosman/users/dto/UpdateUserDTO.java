@@ -1,10 +1,12 @@
 package co.com.dosman.users.dto;
 
-import java.util.List;
-
-import co.com.dosman.common.entities.Role;
 import co.com.dosman.users.utilities.UserValidate;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -47,4 +49,6 @@ public class UpdateUserDTO {
     @NotEmpty(message = UserValidate.PASSWORD_NOT_EMPTY)
     @Pattern(regexp = UserValidate.PASSWORD_REGEX, message = UserValidate.PASSWORD_NOT_VALID)
     private String password;
+
+    private Long role_id;
 }

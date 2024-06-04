@@ -18,6 +18,7 @@ public class UserMapper {
                 .age(user.getAge())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .role_id(user.getRole().getId()) 
                 .build();
     }
 

@@ -44,6 +44,4 @@ public class CreateUserDTO {
     @NotEmpty(message = UserValidate.PASSWORD_NOT_EMPTY)
     @Pattern(regexp = UserValidate.PASSWORD_REGEX, message = UserValidate.PASSWORD_NOT_VALID)
     private String password;
-    
-    private List<Role> roles;
 }

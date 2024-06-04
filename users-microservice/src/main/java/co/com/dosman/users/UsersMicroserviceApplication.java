@@ -8,9 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
-@ComponentScan({ "co.com.dosman.users" })
+@ComponentScan({ "co.com.dosman.users"})
 @EnableDiscoveryClient
-@EnableJpaRepositories({ "co.com.dosman.users.repositories" })
+@EnableJpaRepositories({ "co.com.dosman.users.repositories", "co.com.dosman.roles.repositories" })
 @EntityScan({ "co.com.dosman.common.entities" }) 
 @SpringBootApplication
 public class UsersMicroserviceApplication {

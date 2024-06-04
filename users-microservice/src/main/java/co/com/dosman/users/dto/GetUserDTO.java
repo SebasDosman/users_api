@@ -17,4 +17,5 @@ public class GetUserDTO {
     private Integer age;
     private String email;
     private String password;
+    private Long role_id;
 }

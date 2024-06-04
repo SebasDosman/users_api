@@ -18,4 +18,5 @@ public class RoleValidate {
 
     public static final String ROLE_NOT_FOUND = "Role not found";
     public static final String ROLE_ELIMINATED = "Role with id %s eliminated";
+    public static final String ROLE_NOT_ASSIGNED = "Role already assigned to the user";
 }

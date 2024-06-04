@@ -16,4 +16,5 @@ public interface IUserService {
     GetUserDTO getUserById(Long id) throws UserException, NotFoundException;
     GetUserDTO saveUser(CreateUserDTO createUserDTO) throws UserException, ConflictException;
     GetUserDTO updateUser(UpdateUserDTO updateUserDTO) throws UserException, NotFoundException;
+	GetUserDTO updateUserRole(Long userId, Long newRoleId) throws UserException, NotFoundException;
 }
